@@ -2,7 +2,7 @@
 library(dplyr)
 
 # Set the parent directory path
-parent_dir <- "~/Library/CloudStorage/OneDrive-MassGeneralBrigham/Crompton Folder For Active Files/Gabriela/ANBL1531/ichor_cna_seg_files/test"
+parent_dir <- "./ichor_cna_seg_files"
 
 # Initialize an empty dataframe to store results
 results <- data.frame(file_name = character(), stringsAsFactors = FALSE)
