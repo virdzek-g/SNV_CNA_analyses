@@ -110,7 +110,7 @@ process_seg_file <- function(seg_file) {
 }
 
 # Process all seg files
-seg_files <- list.files("~/Library/CloudStorage/OneDrive-MassGeneralBrigham/Crompton Folder For Active Files/Gabriela/ANBL1531/v2_ULP_WGS_arm_threshold_380_CNV/ULP_WGS_ichor_sln_other", pattern = "\\.seg\\.txt$", full.names = TRUE, recursive = TRUE)
+seg_files <- list.files("./ULP_WGS_ichor_sln_other", pattern = "\\.seg\\.txt$", full.names = TRUE, recursive = TRUE)
 all_results <- rbindlist(lapply(seg_files, process_seg_file), fill = TRUE)
 
 # Reshape to have arms as rows and samples as columns
