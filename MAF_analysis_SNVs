@@ -1,6 +1,4 @@
 
-setwd('~/Library/CloudStorage/OneDrive-MassGeneralBrigham/Crompton Folder For Active Files/Gabriela/ANBL1531/Pancancer_panel_May_2024/without_germline')
-setwd('/Users/gv974/Library/CloudStorage/OneDrive-MassGeneralBrigham/Crompton Folder For Active Files/Gabriela/ANBL1531/Pancancer_panel_May_2024/with_germline')
 
 list_files <- dir() #pattern='PZJ'
 data = data.frame()
@@ -52,35 +50,4 @@ data$sample <- sub('-.*','',data$Tumor_Sample_Barcode)
 data <- data[data$sample %in% pcp$V1,]
 
 data$Time.point <- gsub(".*-","",data$Tumor_Sample_Barcode)su
--------
-
-
-data$ichor <- ifelse(grepl("BL", data$Tumor_Sample_Barcode), 82,
-                   ifelse(grepl("C2", data$Tumor_Sample_Barcode), 16,
-                   ifelse(grepl("C3", data$Tumor_Sample_Barcode), 0,
-                   ifelse(grepl("C4", data$Tumor_Sample_Barcode), 0,
-                   ifelse(grepl("EOI", data$Tumor_Sample_Barcode), 0,
-                   ifelse(grepl("SPC", data$Tumor_Sample_Barcode), 0,
-                   ifelse(grepl("EPC", data$Tumor_Sample_Barcode), 0,
-                   ifelse(grepl("RL", data$Tumor_Sample_Barcode), 72.37, NA))))))))
-
-data$VAF <- data$t_alt_count/(data$t_alt_count + data$t_ref_count)*100
-data$VAF_normalized <- 100/data$ichor*data$VAF
-
-
-----
-
-list_samples <- c('PAZCCH','PAZCFH','PAZELP','PAZFIW','PAZISC','PAZJFB','PAZJFJ','PAZMEX','PAZMNN','PAZNRG','PAZPJY','PAZPZJ','PAZRBA','PAZRTP','PAZSKT','PAZTBA','PAZTZE','PAZWVP')
-
-
-data$Tumor_Sample_Barcode <- sub('\\-.*','',data$Tumor_Sample_Barcode)
-data <- data[data$Tumor_Sample_Barcode %in% list_samples,]
-summary(as.factor(data$Tumor_Sample_Barcode))
-data$VAF <- data$t_alt_count/(data$t_alt_count + data$t_ref_count)*100
-
-data <- data[data$VAF > 4,]
-
-
-
-
 
